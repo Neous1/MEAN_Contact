@@ -12,12 +12,12 @@ app.controller("AppCtrl", function ($scope) {
  person2 = {
      name:"Emily",
      email:"emily@email.com", 
-     number:"(222) 222=2222"
+     number:"(222) 222-2222"
  };
  person3 = {
      name:"John",
      email:"john@email.com", 
-     number:"(333) 333 3333"
+     number:"(333) 333-3333"
  };
 
  var  contactList = [person1, person2, person3 ];

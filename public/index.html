@@ -12,8 +12,8 @@
 </head>
 
 <body>
-        <!-- create controller, to control our interaction between our view (html files) and model (whcih contains our data) -->
-    <div class="container" ng-controller="AppCtrl" >
+    <!-- create controller, to control our interaction between our view (html files) and model (whcih contains our data) -->
+    <div class="container" ng-controller="AppCtrl">
         <h1>Contact List App</h1>
 
         <table>
@@ -24,11 +24,18 @@
                     <th>Number</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr ng-repeat="contact in contactList">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.number}}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="controllers/controller.js"></script>
-    
+
 </body>
 
 </html>
