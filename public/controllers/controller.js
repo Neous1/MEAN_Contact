@@ -1,26 +1,15 @@
+var app = angular.module('myApp', []);
 
-var app = angular.module('myApp',[]);
+app.controller("AppCtrl", function ($scope, $http) {
+    console.log("hello from the controller")
 
-app.controller("AppCtrl", function ($scope) {
- console.log("hello from the controller")
 
- person1 = {
-     name:"Tim",
-     email:"tim@email.com", 
-     number:"(111) 111-1111"
- };
- person2 = {
-     name:"Emily",
-     email:"emily@email.com", 
-     number:"(222) 222-2222"
- };
- person3 = {
-     name:"John",
-     email:"john@email.com", 
-     number:"(333) 333-3333"
- };
+    $http.get("/contactList")
+        .then(function (success) {
+            console.log("We ve got data")
+            $scope.contactList = success.data;
+        }, function(error){
+                console.log("We've got error");
 
- var  contactList = [person1, person2, person3 ];
-
- $scope.contactList = contactList
+        });
 });
