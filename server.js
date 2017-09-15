@@ -32,7 +32,20 @@ app.delete("/contactlist/:id", function(req, res){
     //remove contact from db
     db.contactList.remove({_id:mongojs.ObjectId(id)},function(err, doc){
         res.json(doc);//send item to be remove back to controller
+    });
+});
+app.get("/contactlist/:id", function(req, res){
+    var id = req.params.id;
+    console.log(id);
+    //remove contact from db
+    db.contactList.findOne({_id:mongojs.ObjectId(id)},function(err, doc){
+        res.json(doc);//send item to be remove back to controller
+    });
+
+    app.put("/contactList/:id", function(req, res){
+        var id=req.params.id;
+        console.log(req.body.name);
     })
-})
+});
 app.listen(3000);
 console.log("Server running on port 3000")
