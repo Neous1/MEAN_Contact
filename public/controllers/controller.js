@@ -31,7 +31,6 @@ app.controller("AppCtrl", function ($scope, $http) {
         console.log("please remove this: ", id)
         $http.delete("/contactList/"+id)
         .then(function(success){
-            // $scope.contactList=success.data;
             refresh();
         }, function(error){
             console.log("there is an error getting data to be deleted")
@@ -43,7 +42,6 @@ app.controller("AppCtrl", function ($scope, $http) {
         $http.get("/contactList/"+id)
         .then(function(success){
             $scope.contact = success.data;
-            // refresh();
         }, function(error){
             console.log("there is an error getting data to be deleted")
         });
@@ -51,12 +49,12 @@ app.controller("AppCtrl", function ($scope, $http) {
     $scope.update = function(){
         console.log($scope.contact._id)
         $http.put("/contactList/"+$scope.contact._id, $scope.contact)//take everything in the url and send it to the server i.e. all info related to contact
-        // .then(function(success){
-        //     $scope.contact = success.data;
-        //     // refresh();
-        // }, function(error){
-        //     console.log("there is an error getting data to be deleted")
-        // });
+        //refresh the page after update()
+        .then(function(success){
+            refresh();
+        }, function(error){
+            console.log("there is an error updating data")
+        });
     };
 
     
