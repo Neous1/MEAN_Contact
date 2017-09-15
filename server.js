@@ -21,6 +21,10 @@ app.get("/contactList", function(req, res){
 
 app.post("/contactList", function(req, res){
     console.log(req.body);
+    //insert the item (doc) we parse and received to mongodb
+    db.contactList.insert(req.body, function(err, doc){
+        res.json(doc) // send back the data to our controller
+    })
 });
 
 app.listen(3000);

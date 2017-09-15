@@ -16,5 +16,10 @@ app.controller("AppCtrl", function ($scope, $http) {
     $scope.addContact = function(){
         console.log($scope.contact);
         $http.post("/contactList", $scope.contact)
+        .then(function(success){
+            console.log(success.data)
+        }, function(error){
+            console.log("there is an error sending data back to controller")
+        })
     };
 });
