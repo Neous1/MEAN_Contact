@@ -1,6 +1,7 @@
 var express = require("express");
-
 var app = express();
+var mongojs = require("mongojs");
+var db = mongojs("contactList", ["contactList"]);
 
 //.static tell express to look for static files in a public folder
 
