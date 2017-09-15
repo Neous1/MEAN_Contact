@@ -18,13 +18,18 @@ app.controller("AppCtrl", function ($scope, $http) {
     //addContact() sends input data to server
     $scope.addContact = function () {
         console.log($scope.contact);
-        $http.post("/contactList", $scope.contact)
-            .then(function (success) {
-                console.log(success.data)
-            }, function (error) {
-                console.log("there is an error sending data back to controller")
-            });
-            refresh();
+        if(!$scope.contact._id){
+            $http.post("/contactList", $scope.contact)
+                .then(function (success) {
+                    console.log(success.data)
+                }, function (error) {
+                    console.log("there is an error sending data back to controller")
+                });
+                refresh();
+
+        }else{
+            alert("Did you mean to click on Update :-)");
+        }
     };
 
     $scope.remove = function(id){
@@ -57,5 +62,8 @@ app.controller("AppCtrl", function ($scope, $http) {
         });
     };
 
+    $scope.deselect=function(){
+        $scope.contact="";
+    }
     
 });
