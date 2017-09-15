@@ -12,4 +12,9 @@ app.controller("AppCtrl", function ($scope, $http) {
                 console.log("We've got error");
 
         });
+//addContact() sends input data to server
+    $scope.addContact = function(){
+        console.log($scope.contact);
+        $http.post("/contactList", $scope.contact)
+    };
 });
