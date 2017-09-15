@@ -26,6 +26,13 @@ app.post("/contactList", function(req, res){
         res.json(doc) // send back the data to our controller
     })
 });
-
+app.delete("/contactlist/:id", function(req, res){
+    var id = req.params.id;
+    console.log(id);
+    //remove contact from db
+    db.contactList.remove({_id:mongojs.ObjectId(id)},function(err, doc){
+        res.json(doc);//send item to be remove back to controller
+    })
+})
 app.listen(3000);
 console.log("Server running on port 3000")
